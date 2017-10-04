@@ -1,0 +1,38 @@
+package developer.xander.android_mvp_architecture.data.remote;
+
+
+import developer.xander.android_mvp_architecture.Urls;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class ServiceGenerator{
+    private static Retrofit retrofit;
+
+    private static HttpLoggingInterceptor interceptor
+            = new HttpLoggingInterceptor()
+            .setLevel(HttpLoggingInterceptor.Level.BODY); // for logging and debugging
+
+    private static OkHttpClient.Builder httpClientBuilder
+            = new OkHttpClient.Builder()
+            .addInterceptor(interceptor);
+
+    private static Retrofit.Builder builder =
+            new Retrofit.Builder()
+                    .baseUrl(Urls.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create());
+
+    public static <S> S createService(Class<S> serviceClass) {
+        retrofit = builder
+                .client(httpClientBuilder.build())
+                .build();
+        return retrofit.create(serviceClass);
+    }
+
+
+    public static Retrofit getRetrofit() {
+        return retrofit;
+    }
+
+}

@@ -1,0 +1,6 @@
+project.ext {
+    /*KEYALIAS ='accounts'
+    PASSWORD= 'accounts'
+    FILELOCATION='/media/user/work/Android/clavis/partner/accounts.jks'
+    STOREPASSWORD= 'accounts'*/
+}

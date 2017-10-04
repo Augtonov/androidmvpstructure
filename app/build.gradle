@@ -28,10 +28,31 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            keyAlias KEYALIAS
+            keyPassword PASSWORD
+            storeFile file(FILELOCATION)
+            storePassword STOREPASSWORD
+        }
+        debug {
+
+            keyAlias KEYALIAS
+            keyPassword PASSWORD
+            storeFile file(FILELOCATION)
+            storePassword STOREPASSWORD
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
+
         }
     }
 }

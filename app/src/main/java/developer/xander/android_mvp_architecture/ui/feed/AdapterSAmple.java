@@ -1,4 +1,4 @@
-package developer.xander.android_mvp_architecture;
+package developer.xander.android_mvp_architecture.ui.feed;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
